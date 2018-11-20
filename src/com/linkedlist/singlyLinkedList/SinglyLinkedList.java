@@ -47,9 +47,7 @@ public class SinglyLinkedList {
             }
             Node node = new Node(data);
             if (isEmpty()) {
-                System.out.println("List is Empty and this is the first node.");
                 head = node;
-                node.next = null;
                 count++;
             } else {
                 if (index == 0) {
@@ -57,13 +55,14 @@ public class SinglyLinkedList {
                     head = node;
                     count++;
                 } else {
-                    Node prePointer = head;
-                    Node postPointer = null;
-                    for (int i = 0; i < index - 1; i++) {
-                        prePointer = prePointer.next;
+                    Node tmp = head;
+                    int i = 0;
+                    while (i < index - 1) {
+                        tmp = tmp.next;
+                        i++;
                     }
-                    postPointer = prePointer.next;
-                    prePointer.next = node;
+                    Node postPointer = tmp.next;
+                    tmp.next = node;
                     node.next = postPointer;
                     count++;
                 }
