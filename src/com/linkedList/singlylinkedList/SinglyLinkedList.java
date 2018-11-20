@@ -1,6 +1,5 @@
 package com.linkedList.singlylinkedList;
 
-import com.linkedList.singlylinkedList.Node;
 
 public class SinglyLinkedList {
 
