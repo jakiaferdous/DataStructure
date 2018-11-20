@@ -1,4 +1,6 @@
-package com.linkedlist.singlyLinkedList;
+package com.linkedList.singlylinkedList;
+
+import com.linkedList.singlylinkedList.Node;
 
 public class SinglyLinkedList {
 
@@ -158,5 +160,74 @@ public class SinglyLinkedList {
 
         //soting a list
 
+        public  static  void reverseList(Node head){
+
+            Node curr = head;
+            Node pre =null;
+
+            while (curr != null){
+                Node post = curr.next;
+                pre = curr;
+                curr = curr.next;
+                post.next = pre;
+
+            }
+
+        }
+
+    public void reverseIterative(){
+
+            Node curr = head;
+            Node pre = null;
+            Node post = null;
+
+            while (curr != null){
+
+                post = curr.next;
+                curr.next = pre;
+                pre = curr;
+                curr = post;
+            }
+            head = pre;
+    }
+
+    public void reverseIterative1(){
+        Node currNode = head;
+        Node nextNode = null;
+        Node prevNode = null;
+
+        while(currNode!=null){
+            nextNode = currNode.next;
+            currNode.next = prevNode;
+            prevNode = currNode;
+            currNode = nextNode;
+        }
+        head = prevNode;
 
     }
+
+    //compare two linked list.
+    public boolean compareLists(Node head1, Node head2) {
+
+        if(head1== null && head2 == null){
+            return true;
+        }else{
+            while(head1 != null && head2!= null){
+
+                if(head1.data != head2.data){
+                    return false;
+                }
+                head1 = head1.next;
+                head2 = head2.next;
+            }
+            if(head1 == null && head2 == null){
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+
+
+}

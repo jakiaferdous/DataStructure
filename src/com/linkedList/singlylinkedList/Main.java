@@ -1,4 +1,4 @@
-package com.linkedlist.singlyLinkedList;
+package com.linkedList.singlylinkedList;
 
 public class Main {
 
@@ -7,9 +7,14 @@ public class Main {
 
 
 
-        //list.insertNodeFirst(3);
-        //list.insertNodeFirst(2);
-        list.insertAtIndex(4,0);
+        list.insertNodeFirst(1);
+        list.insertNodeFirst(2);
+        list.insertNodeFirst(3);
+        list.insertNodeFirst(4);
+        list.insertNodeFirst(5);
+        list.insertNodeFirst(6);
+//        list.insertNodeFirst(2);
+//        list.insertAtIndex(4,0);
 //        list.insertNodeFirst(1);
 //        list.insertNodeFirst(0);
 //        list.insertNodeLast(5);
@@ -19,6 +24,9 @@ public class Main {
 //        list.removeFirstNode();
 //        list.removeLastNode();
 //        list.removeAtIndex(6);
+          list.printData();
+          System.out.println("REVESTE:");
+          list.reverseIterative();
 
 
 
