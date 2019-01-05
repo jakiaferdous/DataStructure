@@ -1,0 +1,52 @@
+package com.company;
+
+import java.util.LinkedList;
+
+public class Queue {
+
+    LinkedList <Integer> queue = new LinkedList<>();
+
+    boolean isEmply(){
+        return queue.isEmpty();
+    }
+
+    int queueSize(){
+        return queue.size();
+    }
+
+    void enQueue(int data){
+        if(isEmply()){
+            queue.addFirst(data);
+        }else {
+            queue.addLast(data);
+        }
+    }
+
+    void dQueue(){
+        if(isEmply()){
+            return;
+        }else{
+            queue.remove(0);
+        }
+
+    }
+
+    int peek(){
+        return queue.get(0);
+    }
+
+
+
+    public static void main(String[] args) {
+
+        Queue queue = new Queue();
+        queue.enQueue(12);
+        queue.enQueue(13);
+        queue.enQueue(14);
+        queue.dQueue();
+        System.out.println(queue.peek());
+        System.out.println(queue.queueSize());
+
+
+    }
+}
