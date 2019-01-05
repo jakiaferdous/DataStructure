@@ -1,0 +1,88 @@
+package com.company.queueImplimentation;
+
+public class QueueImplimentation {
+
+    int front, rear;
+    int capacity;
+    int[] cQueue;
+
+    QueueImplimentation(int size) {
+        this.front = -1;
+        this.rear = -1;
+        this.capacity = size;
+        cQueue = new int[this.capacity];
+    }
+
+    boolean isEmpty() {
+        return (this.front == -1);
+    }
+
+    boolean isFull() {
+        if ((this.rear + 1 == this.capacity) && (this.front == 0)) {
+            System.out.println("Queue is full !!");
+            return true;
+        } else if ((this.rear + 1 != this.capacity) && this.rear + 1 == this.front) {
+            System.out.println("Queue is full !!");
+            return true;
+        }
+        ;
+        return false;
+
+    }
+
+    void enQueue(int data) {
+        if (isFull()) {
+            return;
+        } else if (isEmpty()) {
+            this.front++;
+            this.rear++;
+            cQueue[this.rear] = data;
+        } else if ((this.rear + 1 == this.capacity) && (this.front != 0)) {
+            this.rear = 0;
+            cQueue[this.rear] = data;
+        } else {
+            rear++;
+            cQueue[this.rear] = data;
+        }
+    }
+
+    void deQueue() {
+        if (isEmpty()) {
+            return;
+        } else if (this.front == this.rear) {
+            this.cQueue[front] = 0;
+            this.cQueue[rear] = 0;
+            this.front += -1;
+            this.rear += -1;
+        } else {
+            cQueue[front] = 0;
+            if (this.front + 1 == this.capacity) {
+                this.front = 0;
+            }
+            this.front++;
+        }
+
+    }
+
+    void printQueue() {
+        for (int i = 0; i < cQueue.length; i++) {
+            System.out.print(cQueue[i] + " ");
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+
+        QueueImplimentation queue = new QueueImplimentation(3);
+
+        queue.enQueue(12);
+        queue.enQueue(22);
+        queue.enQueue(32);
+        queue.printQueue();
+        queue.deQueue();
+        queue.printQueue();
+        queue.enQueue(42);
+        queue.printQueue();
+
+    }
+}
