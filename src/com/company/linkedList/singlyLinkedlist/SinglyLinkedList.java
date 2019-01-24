@@ -1,4 +1,4 @@
-package com.company;
+package com.company.linkedList.singlyLinkedlist;
 
 import java.util.HashMap;
 
