@@ -1,0 +1,92 @@
+package com.company;
+
+import java.util.Arrays;
+
+public class ArrayImp {
+
+    Object[] arrayList;
+    int actualSize = 0;
+
+    ArrayImp() {
+        arrayList = new Object[10];
+    }
+
+    ArrayImp(int n) {
+        if (n <= 0) {
+            n = 10;
+        }
+        arrayList = new Object[n];
+    }
+
+
+    public int size() {
+        return actualSize;
+    }
+
+    public void add(Object obj) {
+        if (actualSize >= arrayList.length) {
+            increaseCapacity();
+        }
+        arrayList[actualSize] = obj;
+        actualSize++;
+    }
+
+    public void add(int index, Object obj) {
+        if (index > actualSize) {
+            throw new ArrayIndexOutOfBoundsException();
+
+        } else if (index == actualSize) {
+            arrayList[actualSize] = obj;
+            increaseCapacity();
+            actualSize++;
+        } else {
+            Object tmp1;
+            tmp1 = arrayList[index];
+            arrayList[index] = obj;
+            index++;
+            while (index < actualSize) {
+                Object tmp2;
+                tmp2 = arrayList[index];
+                arrayList[index] = tmp1;
+                index++;
+                tmp1 = arrayList[index];
+                arrayList[index] = tmp2;
+                index++;
+            }
+            arrayList[index] = tmp1;
+            actualSize++;
+        }
+
+
+    }
+
+    private void increaseCapacity() {
+        arrayList = Arrays.copyOf(arrayList, actualSize * 2);
+    }
+    public void remove() {
+        arrayList[actualSize] = null;
+        actualSize--;
+    }
+
+    public void remove(int index) {
+        if (index >= actualSize) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        while (index < actualSize) {
+            arrayList[index] = arrayList[index + 1];
+            index++;
+        }
+        arrayList[index] = null;
+        actualSize--;
+
+
+    }
+
+    public void printArray() {
+        for (int i = 0; i < actualSize; i++) {
+            System.out.println(arrayList[i] + " ");
+        }
+    }
+
+
+}
